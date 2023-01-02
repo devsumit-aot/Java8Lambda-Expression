@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ComparatorImplUsingLambdaExpression {
@@ -20,7 +21,17 @@ public class ComparatorImplUsingLambdaExpression {
         Collections.sort(obj,(v1,v2)->{
           return  v1.getMarks()>v2.getMarks()? 1 :(v1.getMarks()==v2.getMarks()?0:-1);
         });
+
+        // Sorting based on string
+        // Method 1
+        Collections.sort(obj,(e1,e2) -> {
+            return  e1.getSname().compareTo(e2.getSname());
+        });
+        // Method 2
+        Collections.sort(obj, Comparator.comparing(Student::getSname));
+
         return obj;
+
     }
 
 
